@@ -15,7 +15,7 @@ def getPeak(y,Fs):
 
     fr = 0
     mag = 0
-    for i in range(2500,3000):
+    for i in range(2500,2950):
         if abs(Y[i]) > mag:
             fr = i
             mag = abs(Y[i])
@@ -27,18 +27,17 @@ Fs = 44100;  # sampling rate
 cold = 7
 rate,data=read('7c_water.wav')
 y=data[:,1]
-
 cold_f = getPeak(y,Fs)
 
 hot = 100
 rate,data=read('hot_water.wav')                                                                             
 y=data[:,1] 
-
 hot_f = getPeak(y,Fs)
 
 rate,data=read('test_12C.wav')
 y=data[:,1]
 x = getPeak(y,Fs)
+
 m = (cold-hot)/(cold_f-hot_f)
 y = -m*x + (-m*-hot_f) + cold
 
