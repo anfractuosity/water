@@ -39,7 +39,6 @@ hot_f = getPeak(y,Fs)
 rate,data=read('test_12C.wav')
 y=data[:,1]
 x = getPeak(y,Fs)
-print(x)
 m = (cold-hot)/(cold_f-hot_f)
 y = -m*x + (-m*-hot_f) + cold
 
