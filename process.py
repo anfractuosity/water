@@ -23,12 +23,27 @@ def getPeak(y,Fs):
 
 Fs = 44100;  # sampling rate
 
+
+cold = 7
 rate,data=read('7c_water.wav')
 y=data[:,1]
 
-print(getPeak(y,Fs))
+cold_f = getPeak(y,Fs)
 
-rate,data=read('hot_water.wav')                                                                                 
+hot = 100
+rate,data=read('hot_water.wav')                                                                             
 y=data[:,1] 
 
-print(getPeak(y,Fs))
+hot_f = getPeak(y,Fs)
+
+rate,data=read('test_12C.wav')
+y=data[:,1]
+x = getPeak(y,Fs)
+print(x)
+m = (cold-hot)/(cold_f-hot_f)
+y = -m*x + (-m*-hot_f) + cold
+
+print(y)
+
+
+
